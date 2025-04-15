@@ -1,0 +1,141 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  .container {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 700px;
+    width: 100%;
+    margin: 20px;
+    transition: transform 0.3s ease;
+  }
+  .container:hover {
+    transform: translateY(-5px);
+  }
+  .logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 200px;
+    height: auto;
+  }
+  h2 {
+    font-weight: 700;
+    color: #003087;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .form-label {
+    font-weight: 500;
+    color: #003087;
+  }
+  .form-control {
+    border: 2px solid #003087;
+    border-radius: 10px;
+    padding: 12px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .form-control:hover,
+  .form-control:focus {
+    border-color: #0056d2;
+    box-shadow: 0 0 10px rgba(0, 86, 210, 0.3);
+    outline: none;
+  }
+  .btn-custom {
+    background: #ffcc00;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: #003087;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%;
+  }
+  .btn-custom:hover {
+    background: #e6b800;
+    transform: translateY(-2px);
+  }
+  .btn-custom:disabled {
+    background: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .progress-container {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    transition: background 0.3s ease;
+  }
+  .progress-container.active {
+    background: #fff3e6;
+  }
+  .progress-container.success {
+    background: #e6ffe6;
+  }
+  .progress-container.error {
+    background: #ffe6e6;
+  }
+  .progress {
+    height: 15px;
+    border-radius: 10px;
+    background: #dfe6e9;
+    overflow: hidden;
+  }
+  .progress-bar {
+    background: #003087;
+    transition: width 0.5s ease;
+  }
+  #progress-text {
+    font-weight: 500;
+    color: #003087;
+    margin-top: 10px;
+  }
+  .log-container {
+    margin-top: 20px;
+    max-height: 250px;
+    overflow-y: auto;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+  }
+  .log-entry {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+  .log-entry.error {
+    color: #dc3545;
+  }
+  .log-entry.success {
+    color: #28a745;
+  }
+  .log-entry.warning {
+    color: #ffc107;
+  }
+  .download-btn {
+    display: none;
+    margin-top: 20px;
+    background: #28a745;
+    color: white;
+  }
+  .download-btn:hover {
+    background: #218838;
+    color: white;
+  }
+  .spinner-border {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+  }
+  
