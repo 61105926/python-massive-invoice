@@ -1,0 +1,6 @@
+flask
+flask_socketio
+pandas
+selenium
+webdriver_manager
+openpyxl

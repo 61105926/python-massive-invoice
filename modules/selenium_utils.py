@@ -16,9 +16,12 @@ from config import DOWNLOAD_TIMEOUT, WAIT_TIMEOUT
 logger = logging.getLogger(__name__)
 
 def create_driver(output_dir):
-    """Crea y configura un driver de Selenium Chrome"""
+    """Crea y configura un driver de Selenium Chrome para entorno Docker"""
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")  # Crucial para Docker
+    chrome_options.add_argument("--no-sandbox")  # Evita problemas de permisos
+    chrome_options.add_argument("--disable-dev-shm-usage")  # Usa /tmp en vez de /dev/shm
+    chrome_options.add_argument("--disable-gpu")  # Previene errores en algunos contenedores
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36")
     chrome_options.add_experimental_option("prefs", {
         "download.default_directory": os.path.abspath(output_dir),
@@ -26,8 +29,9 @@ def create_driver(output_dir):
         "download.directory_upgrade": True,
         "safebrowsing.enabled": True
     })
+
     try:
-        service = Service(ChromeDriverManager().install())
+        service = Service()
         driver = webdriver.Chrome(service=service, options=chrome_options)
         logger.debug(f"Driver creado con éxito. Directorio de descarga: {os.path.abspath(output_dir)}")
         return driver
@@ -35,7 +39,7 @@ def create_driver(output_dir):
         logger.error(f"Error al crear el driver: {str(e)}")
         logger.info("Limpiando caché de ChromeDriver y reintentando...")
         import shutil
-        shutil.rmtree("/Users/user/.wdm/drivers/chromedriver", ignore_errors=True)
+        shutil.rmtree("/root/.wdm/drivers/chromedriver", ignore_errors=True)  # ruta adaptada para Linux/Docker
         service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=chrome_options)
         logger.debug("Driver reinstalado con éxito.")
